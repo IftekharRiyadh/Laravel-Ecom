@@ -14,15 +14,18 @@ class AdminController extends Controller
 
     public function uploadproduct(request $request)
     {
-       $data=new product; 
-       $image=$request->file;
-       $imagename=time().'.'.$image->getClintOriginalExtension();
-       $request->file->move('productimage',$imagename);
-       $data->image=$imagename;
-       $data->title=$request->title;
-       $data->price=$request->price;
-       $data->description=$request->des;
-       $data->quantity=$request->quantity;
+        $filePath = null;
+       $data = new product; 
+       if($request->hasFile('product_file')) {
+        $image      = $request->file('product_file');
+        $fileName   = time() . '.' . $image->getClientOriginalExtension();
+        $filePath = $request->file('product_file')->store('uploads');
+       }
+       $data->image = $filePath;
+       $data->title = $request->title;
+       $data->price = $request->price;
+       $data->description = $request->des;
+       $data->quantity = $request->quantity;
        $data->save();
 
        return redirect()->back();

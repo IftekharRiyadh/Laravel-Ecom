@@ -34,7 +34,7 @@
             <div class="container" align="center">
       <h1 class="title">Add Product</h1>
 
-      <form action="{{url('uploadproduct')}}" method="" enctype="multipart/form-data">
+      <form action="{{url('uploadproduct')}}" method="post" enctype="multipart/form-data">
       @csrf
 
       <div style="padding:15px;">
@@ -63,7 +63,7 @@
 
       <div style="padding:15px;">
          
-          <input type="file" name="file">
+          <input type="file" name="product_file">
       </div>
 
       <div style="padding:15px;">

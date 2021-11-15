@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,7 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+return view('welcome');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -26,4 +27,4 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 route::get('/redirect',[HomeController::class,'redirect']);
 route::get('/',[HomeController::class,'index']);
 route::get('/product',[AdminController::class,'product']);
-route::POST('/uploadproduct',[AdminController::class,'uploadproduct']);
+route::post('/uploadproduct',[AdminController::class,'uploadproduct']);
